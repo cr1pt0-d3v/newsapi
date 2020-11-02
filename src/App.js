@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import useFetch from "./effects/use-fetch.effect";
 
 function App() {
+  const country = "de";
+  const category = "business";
+  const news = useFetch(country, category);
+  console.log(news);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {news
+        ? news.articles.map((article, id) => (
+            <p key={id}>{article.description}</p>
+          ))
+        : null}
     </div>
   );
 }
