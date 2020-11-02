@@ -8,6 +8,8 @@ import MainFeaturedPost from './components/MainFuturedPost.component';
 import FeaturedPost from './components/FeaturedPost.component';
 import Footer from './components/Footer.component';
 
+import useFetch from "./effects/use-fetch.effect";
+
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -16,66 +18,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
+  {title: 'General', url: "#" },
   { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
   { title: 'Science', url: '#' },
+  { title: 'Business', url: '#' },
   { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
-  { title: 'Travel', url: '#' },
+  { title: 'Sports', url: '#' },
+  { title: 'Entertainment', url: '#' },
+  
 ];
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
-  imgText: 'main image description',
-  linkText: 'Continue reading…',
-};
-
-const featuredPosts = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-];
-
-
 
 export default function Blog() {
   const classes = useStyles();
+  const news = useFetch();
+  console.log(news);
 
   return (
     <>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="Blog" sections={sections} />
+        <Header title="News Api" sections={sections} />
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
-          </Grid>
-          <Grid container spacing={5} className={classes.mainGrid}>
-           
-          </Grid>
+          {
+            news ? (<><MainFeaturedPost post={news.articles[0]} />
+              <Grid container spacing={4}>
+                {news.articles.map((article, id) => (
+                  <FeaturedPost key={id} post={article} />
+                ))}
+              </Grid>
+              <Grid container spacing={5} className={classes.mainGrid}>
+              </Grid></>) : null
+          }
         </main>
       </Container>
       <Footer title="Footer" description="Something here to give the footer a purpose!" />

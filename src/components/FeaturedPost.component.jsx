@@ -21,13 +21,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FeaturedPost(props) {
+export default function FeaturedPost({ post }) {
   const classes = useStyles();
-  const { post } = props;
 
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
+      <CardActionArea component="a" href={post.url}>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>
@@ -35,10 +34,10 @@ export default function FeaturedPost(props) {
                 {post.title}
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
-                {post.date}
+                {post.publishedAt}
               </Typography>
               <Typography variant="subtitle1" paragraph>
-                {post.description}
+                {post.content}
               </Typography>
               <Typography variant="subtitle1" color="primary">
                 Continue reading...
@@ -48,7 +47,7 @@ export default function FeaturedPost(props) {
           <Hidden xsDown>
             <CardMedia
               className={classes.cardMedia}
-              image={post.image}
+              image={post.urlToImage}
               title={post.imageTitle}
             />
           </Hidden>

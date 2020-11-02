@@ -1,6 +1,6 @@
 import  {useState, useEffect} from "react";
 
-const useFetch = (country, category) => {
+const useFetch = (country = "de", category = "general") => {
     const [data, setData] = useState(null);
     const apiKey = "a468354129fc4eb98886d95539f176e2";
     useEffect(() => {

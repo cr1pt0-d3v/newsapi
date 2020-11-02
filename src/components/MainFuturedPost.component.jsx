@@ -35,21 +35,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainFeaturedPost(props) {
+export default function MainFeaturedPost({ post }) {
   const classes = useStyles();
-  const { post } = props;
 
   return (
     <Paper
       className={classes.mainFeaturedPost}
-      style={{ backgroundImage: `url(${post.image})` }}
+      style={{ backgroundImage: `url(${post.urlToImage})` }}
     >
       {/* Increase the priority of the hero background image */}
       {
         <img
           style={{ display: "none" }}
-          src={post.image}
-          alt={post.imageText}
+          src={post.urlToImage}
+          alt={post.title}
         />
       }
       <div className={classes.overlay} />
@@ -65,10 +64,10 @@ export default function MainFeaturedPost(props) {
               {post.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
+              {post.content}
             </Typography>
-            <Link variant="subtitle1" href="#">
-              {post.linkText}
+            <Link variant="subtitle1" href={post.url}>
+              Continue reading...
             </Link>
           </div>
         </Grid>
