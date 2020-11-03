@@ -6,7 +6,7 @@ const useFetch = (country = "de", category = "general") => {
     useEffect(() => {
       const fetchData = async () => {
         const res = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`
+          `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=50&apiKey=${apiKey}`
         );
         const fetchData = await res.json();
         setData(fetchData);
