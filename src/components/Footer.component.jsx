@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Footer(props) {
+const Footer = (props) => {
   const classes = useStyles();
   const { description, title } = props;
 
@@ -52,7 +52,9 @@ export default function Footer(props) {
       </Container>
     </footer>
   );
-}
+};
+
+export default Footer;
 
 Footer.propTypes = {
   description: PropTypes.string,

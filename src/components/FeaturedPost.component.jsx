@@ -17,13 +17,12 @@ const useStyles = makeStyles({
     flex: 1,
   },
   cardMedia: {
-    width: 160,
+    width: 260,
   },
 });
 
-export default function FeaturedPost({ post }) {
+const FeaturedPost = ({ post }) => {
   const classes = useStyles();
-
   return (
     <Grid item xs={12} md={6}>
       <CardActionArea component="a" href={post.url}>
@@ -55,7 +54,9 @@ export default function FeaturedPost({ post }) {
       </CardActionArea>
     </Grid>
   );
-}
+};
+
+export default FeaturedPost;
 
 FeaturedPost.propTypes = {
   post: PropTypes.object,

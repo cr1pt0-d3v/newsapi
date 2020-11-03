@@ -10,38 +10,18 @@ import Footer from '../components/Footer.component';
 import useFetch from "../effects/use-fetch.effect";
 import { useParams } from 'react-router-dom';
 
-const sections = [
-  {title: 'General', url: 'general' },
-  { title: 'Technology', url: 'technology' },
-  { title: 'Science', url: 'science' },
-  { title: 'Business', url: 'business' },
-  { title: 'Health', url: 'health' },
-  { title: 'Sports', url: 'sports' },
-  { title: 'Entertainment', url: 'entertainment' },
-];
-
-const options = [
-  { label: "Germany", value: "de"},
-  { label: "United States", value: "us"},
-  { label: "Romania", value: "ro"},
-  { label: "Great Britain", value: "gb"},
-  { label: "Netherlands", value: "nl"},
-  { label: "France", value: "fr"},
-];
 
 const Blog = () => {
   let category = useParams().id;
   console.log("id", category);
-  /* let country = useParams().id; */
-  /* console.log("country", country); */
-  const news = useFetch("de", category);
+  const news = useFetch("us", category);
   console.log(news);
 
   return (
     <>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="News Api" sections={sections} options={options} />
+        <Header title="News Api" />
         <main>
           {
             news ? ( <>

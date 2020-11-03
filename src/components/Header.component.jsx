@@ -26,9 +26,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const sections = [
+  { title: "General", url: "general" },
+  { title: "Technology", url: "technology" },
+  { title: "Science", url: "science" },
+  { title: "Business", url: "business" },
+  { title: "Health", url: "health" },
+  { title: "Sports", url: "sports" },
+  { title: "Entertainment", url: "entertainment" },
+];
+
 const Header = (props) => {
   const classes = useStyles();
-  const { sections, title, options } = props;
+  const { title } = props;
 
   return (
     <>
@@ -47,7 +57,7 @@ const Header = (props) => {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        <CountryButton options={options} />
+        <CountryButton />
       </Toolbar>
       <Toolbar
         component="nav"

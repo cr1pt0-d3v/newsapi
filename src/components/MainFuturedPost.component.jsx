@@ -34,13 +34,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainFeaturedPost({ post }) {
+const MainFeaturedPost = ({ post }) => {
   const classes = useStyles();
-
   return (
     <Paper
       className={classes.mainFeaturedPost}
-      style={{ backgroundImage: `url(${post.urlToImage})` }}
+      style={{
+        backgroundImage: `url(${post.urlToImage})`,
+        backgroundSize: "cover",
+      }}
     >
       {/* Increase the priority of the hero background image */}
       {
@@ -63,7 +65,7 @@ export default function MainFeaturedPost({ post }) {
               {post.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {post.content}
+              {post.content.substring(0, 200)}
             </Typography>
             <Link variant="subtitle1" href={post.url}>
               Continue reading...
@@ -73,7 +75,9 @@ export default function MainFeaturedPost({ post }) {
       </Grid>
     </Paper>
   );
-}
+};
+
+export default MainFeaturedPost;
 
 MainFeaturedPost.propTypes = {
   post: PropTypes.object,

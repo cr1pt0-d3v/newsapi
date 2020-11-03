@@ -15,14 +15,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CountryButton = ({ options }) => {
+const options = [
+  { label: "Germany", value: "de" },
+  { label: "United States", value: "us" },
+  { label: "Romania", value: "ro" },
+  { label: "Great Britain", value: "gb" },
+  { label: "Netherlands", value: "nl" },
+  { label: "France", value: "fr" },
+];
+
+const CountryButton = () => {
   const classes = useStyles();
   const [country, setCountry] = React.useState("");
 
   const handleChange = (event) => {
     setCountry(event.target.value);
   };
-  console.log(country);
+
+  console.log("country", country);
+
   return (
     <FormControl className={classes.formControl}>
       <InputLabel id="demo-simple-select-helper-label">Country</InputLabel>
